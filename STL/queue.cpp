@@ -16,6 +16,6 @@ int main(){
         q.pop();
     }
     cout<<endl;
-
+    //his comand pop push front back ..
     return 0;
 }
