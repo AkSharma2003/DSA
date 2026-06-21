@@ -1,0 +1,63 @@
+// below are types of graph
+// 1. undirected and unweghted graph
+// 2. unedirected and weighted graph
+// 3. directed and weighted graph
+// 4. directed and unweghted graph 
+// 5. disconected graph
+
+
+# include<iostream>
+# include<vector>
+# include<list>
+# include<queue>
+using namespace std;
+
+class graph{
+    int v;
+    list<int> *l;
+    public:
+    graph(int v){
+        this->v=v;
+        l=new list<int> [v];
+    }
+    void addEdge(int u,int v){
+        l[u].push_back(v);
+        l[v].push_back(u);
+    }
+
+    // bfs triversal
+    void bfs(){
+        queue<int> q;
+        vector<bool> vis(v,false);
+        q.push(0);
+        vis[0]=true;
+        while(q.size()>0){
+            int u=q.front();
+            q.pop();
+            cout<<u<<" ";
+
+            for(int v:l[u]){
+                if(!vis[v]){
+                    vis[v]=true;
+                    q.push(v);
+                }
+            }
+        }
+        cout<<endl; 
+    }
+};
+
+int main(){
+    graph g(5);
+    g.addEdge(0,1);
+    g.addEdge(1,2);
+    g.addEdge(1,3);
+    g.addEdge(2,3);
+    g.addEdge(2,4);
+
+    g.bfs();
+
+
+    return 0;
+}
+
